@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hola mundo!</h1>
+</body>
+<script>
+    // Variable para almacenar el último ancho de ventana conocido
+let lastKnownWidth = window.innerWidth;
+
+// Define la media query
+let mql = window.matchMedia('(max-width: 1200px)');
+
+function checkWidth() {
+    // Si la media query se cumple y el ancho de la ventana ha cambiado
+    if (mql.matches && window.innerWidth !== lastKnownWidth) {
+        alert(`La pantalla tiene ${window.innerWidth}px de ancho`);
+        // Aquí puedes añadir el código que quieres que se ejecute
+
+        // Actualiza el último ancho de ventana conocido
+        lastKnownWidth = window.innerWidth;
+    }
+
+    // Solicita que checkWidth se ejecute en el próximo frame
+    requestAnimationFrame(checkWidth);
+}
+
+// Ejecuta la función inicialmente
+checkWidth();
+
+</script>
+</html>
