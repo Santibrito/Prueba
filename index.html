@@ -29,6 +29,9 @@ function checkWidth() {
     requestAnimationFrame(checkWidth);
 }
 
+var isSafari = window.safari !== undefined;
+if (isSafari) alert("Safari, yeah!");
+
 // Ejecuta la función inicialmente
 checkWidth();
 
