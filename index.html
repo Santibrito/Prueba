@@ -9,28 +9,29 @@
     <h1>Hola mundo!</h1>
 </body>
 <script>
-    // Variable para almacenar el último ancho de ventana conocido
-let lastKnownWidth = window.innerWidth;
 
-// Define la media query
-let mql = window.matchMedia('(max-width: 1200px)');
+    let minWidth = 500;
+let body = document.body;
 
-function checkWidth() {
-    // Si la media query se cumple y el ancho de la ventana ha cambiado
-    if (mql.matches && window.innerWidth !== lastKnownWidth) {
-        alert(`La pantalla tiene ${window.innerWidth}px de ancho`);
-        // Aquí puedes añadir el código que quieres que se ejecute
-
-        // Actualiza el último ancho de ventana conocido
-        lastKnownWidth = window.innerWidth;
-    }
-
-    // Solicita que checkWidth se ejecute en el próximo frame
-    requestAnimationFrame(checkWidth);
+function changeMinWidth() {
+  let newMinWidth = Math.floor(Math.random() * 1000);
+  body.style.minWidth = newMinWidth + "px";
+  alert("El nuevo ancho mínimo es: " + newMinWidth);
 }
 
-var isSafari = window.safari !== undefined;
-if (isSafari) alert("Safari, yeah!");
+function checkMinWidth() {
+  if (body.offsetWidth >= minWidth) {
+    changeMinWidth();
+  }
+  window.requestAnimationFrame(checkMinWidth);
+}
+
+checkMinWidth();
+
+
+if(window.GestureEvent){
+alert("Estas en iphone")
+}
 
 // Ejecuta la función inicialmente
 checkWidth();
