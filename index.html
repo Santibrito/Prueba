@@ -9,17 +9,25 @@
     <h1>Hola mundo!</h1>
 </body>
 <script>
+	
 
 function isSafariBrowser() {
 	return /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
+} 
+
+	function observeBodyResize() {
+	let resizeObserver = new ResizeObserver(entries => {
+		for (let entry of entries) {
+			alert("Prueba")
+		}
+	});
+	resizeObserver.observe(document.body);
 }
-    
+	
 function safariResizeObserver() {
 	if (isSafariBrowser()) {
-        alert("Es Safari")
-	}else{
-        alert("Es Chrome")
-    }
+		observeBodyResize();
+	}
 }
 safariResizeObserver();
 
