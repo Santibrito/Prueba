@@ -13,24 +13,24 @@
 
 
 
-let ro = new ResizeObserver(entries => {
-    console.log("se ejecuta");
-  for (let entry of entries) {
-    let cr = entry.contentRect;
-    alert(`El ancho del elemento es ${cr.width}px`);
-  }
-});
-
-// Observa el elemento body
-ro.observe(document.body);
-
-var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-if (isSafari) {
-   alert("SAFARI")
-} else {
-  alert("CHROME")
+/** * Verifica si el navegador es Safari. * @returns {boolean} Devuelve verdadero si el navegadores es Safari, falso en caso contrario. */
+function isSafariBrowser() {
+	return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+} /** * Inicializa un observador de redimensionamiento para el elemento body. * Cuando se detecta un cambio, actualiza la interfaz de usuario. */
+function observeBodyResize() {
+	let resizeObserver = new ResizeObserver(entries => {
+		for (let entry of entries) {
+			alert("Se actualizá")
+		}
+	});
+	resizeObserver.observe(document.body);
+} /** * Verifica si el navegador es Safari y, si es así, * inicia la observación de cambios de tamaño. */
+function safariResizeObserver() {
+	if (isSafariBrowser) {
+		observeBodyResize();
+	}
 }
+safariResizeObserver();
 
 
 
