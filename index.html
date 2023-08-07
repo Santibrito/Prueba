@@ -10,40 +10,16 @@
 </body>
 <script>
 
-  /**
- * Monitorea el ancho de la ventana y ejecuta una acción cuando el ancho de la ventana es mayor o igual, o menor o igual, al valor actual de currentWidth.
- * Utiliza MediaQueryList para realizar consultas de medios y detectar los cambios de tamaño.
- * Imprime un mensaje en la consola cuando se cumplen las condiciones de las consultas de medios.
- */
-function monitorWindowWidth() {
+window.addEventListener('resize', function() {
   let currentWidth = window.innerWidth;
-  let mqlMin = window.matchMedia(`(min-width: ${currentWidth}px)`);
-  let mqlMax = window.matchMedia(`(max-width: ${currentWidth}px)`);
-
-  function handleWidthChangeMin(e) {
-    if (e.matches) {
-      alert("El ancho de la ventana es mayor o igual que el valor actual de currentWidth");
-    }
-    currentWidth = window.innerWidth;
-    mqlMin = window.matchMedia(`(min-width: ${currentWidth}px)`);
-    mqlMin.addListener(handleWidthChangeMin);
+  
+  // Puedes realizar diferentes acciones en función del tamaño de la ventana
+  if(currentWidth >= 1000) {
+    console.log("El ancho de la ventana es mayor o igual que 1000px");
+  } else if(currentWidth <= 500) {
+    console.log("El ancho de la ventana es menor o igual que 500px");
   }
-
-  function handleWidthChangeMax(e) {
-    if (e.matches) {
-      alert("El ancho de la ventana es menor o igual que el valor actual de currentWidth");
-    }
-    currentWidth = window.innerWidth;
-    mqlMax = window.matchMedia(`(max-width: ${currentWidth}px)`);
-    mqlMax.addListener(handleWidthChangeMax);
-  }
-
-  mqlMin.addListener(handleWidthChangeMin);
-  mqlMax.addListener(handleWidthChangeMax);
-}
-
-// Llamamos a la función para que empiece a monitorizar el ancho de la ventana
-monitorWindowWidth();
+});
 
 
 </script>
