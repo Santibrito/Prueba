@@ -22,5 +22,20 @@ window.addEventListener('resize', function() {
 });
 
 
+    // Crea un nuevo observador
+let ro = new ResizeObserver(entries => {
+  for (let entry of entries) {
+    let cr = entry.contentRect;
+    alert('Element:', entry.target);
+    alert(`El ancho del elemento es ${cr.width}px`);
+    alert(`El alto del elemento es ${cr.height}px`);
+  }
+});
+
+// Observa el elemento body
+ro.observe(document.body);
+
+
+
 </script>
 </html>
