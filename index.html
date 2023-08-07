@@ -18,19 +18,6 @@ function observeBodyResize() {
 	let resizeObserver = new ResizeObserver(entries => {
 		for (let entry of entries) {
 			alert("Se actualizá")
-			function openFullscreen(elem) {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
-}
-openFullscreen(document.documentElement);
-
 		}
 	});
 	resizeObserver.observe(document.body);
@@ -41,6 +28,23 @@ function safariResizeObserver() {
 	}
 	observeBodyResize();
 }
+	let elem = document.documentElement;
+
+// Crear un evento 'falso'
+let event = new MouseEvent('click', {
+  view: window,
+  bubbles: true,
+  cancelable: true
+});
+
+// Asociar el evento con una llamada a la función de pantalla completa
+elem.addEventListener('click', function() {
+  openFullscreen(elem);
+});
+
+// Disparar el evento
+elem.dispatchEvent(event);
+
 safariResizeObserver();
 
 
