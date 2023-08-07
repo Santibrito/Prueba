@@ -10,25 +10,19 @@
 </body>
 <script>
 
-/** * Verifica si el navegador es Safari. * @returns {boolean} Devuelve verdadero si el navegadores es Safari, falso en caso contrario. */
-function isSafariBrowser() {
-	return /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
-} /** * Inicializa un observador de redimensionamiento para el elemento body. * Cuando se detecta un cambio, actualiza la interfaz de usuario. */
-function observeBodyResize() {
-	let resizeObserver = new ResizeObserver(entries => {
-		for (let entry of entries) {
-			alert("Se actualizá")
-		}
-	});
-	resizeObserver.observe(document.body);
-} /** * Verifica si el navegador es Safari y, si es así, * inicia la observación de cambios de tamaño. */
-function safariResizeObserver() {
-	if (isSafariBrowser()) {
-		observeBodyResize();
-	}
-	observeBodyResize();
+function openFullscreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
 }
-	let elem = document.documentElement;
+
+let elem = document.documentElement;
 
 // Crear un evento 'falso'
 let event = new MouseEvent('click', {
@@ -44,9 +38,6 @@ elem.addEventListener('click', function() {
 
 // Disparar el evento
 elem.dispatchEvent(event);
-
-safariResizeObserver();
-
 
 
 
