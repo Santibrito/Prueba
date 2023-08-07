@@ -23,10 +23,8 @@ function observeBodyResize() {
 	resizeObserver.observe(document.body);
 } /** * Verifica si el navegador es Safari y, si es así, * inicia la observación de cambios de tamaño. */
 function safariResizeObserver() {
-	if (isSafariBrowser) {
-	observeBodyResize();
-	}else{
-	}	
+	if (isSafariBrowser()) {
+	observeBodyResize();	
 }
 safariResizeObserver();
 
