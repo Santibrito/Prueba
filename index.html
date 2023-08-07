@@ -12,7 +12,7 @@
 
 /** * Verifica si el navegador es Safari. * @returns {boolean} Devuelve verdadero si el navegadores es Safari, falso en caso contrario. */
 function isSafariBrowser() {
-	return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+	return /Version\/[\d\.]+.*Safari/.test(navigator.userAgent);
 } /** * Inicializa un observador de redimensionamiento para el elemento body. * Cuando se detecta un cambio, actualiza la interfaz de usuario. */
 function observeBodyResize() {
 	let resizeObserver = new ResizeObserver(entries => {
