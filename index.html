@@ -24,8 +24,9 @@ function observeBodyResize() {
 } /** * Verifica si el navegador es Safari y, si es así, * inicia la observación de cambios de tamaño. */
 function safariResizeObserver() {
 	if (isSafariBrowser) {
-		observeBodyResize();
-	}
+	observeBodyResize();
+	}else{
+	}	
 }
 safariResizeObserver();
 
