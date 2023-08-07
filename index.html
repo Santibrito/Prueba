@@ -10,30 +10,29 @@
 </body>
 <script>
 
-window.addEventListener('resize', function() {
-  let currentWidth = window.innerWidth;
-  
-  // Puedes realizar diferentes acciones en función del tamaño de la ventana
-  if(currentWidth >= 1000) {
-    alert("El ancho de la ventana es mayor o igual que 1000px");
-  } else if(currentWidth <= 500) {
-    alert("El ancho de la ventana es menor o igual que 500px");
-  }
-});
 
 
-    // Crea un nuevo observador
+
 let ro = new ResizeObserver(entries => {
+    console.log("se ejecuta");
   for (let entry of entries) {
     let cr = entry.contentRect;
-    alert('Element:', entry.target);
     alert(`El ancho del elemento es ${cr.width}px`);
-    alert(`El alto del elemento es ${cr.height}px`);
   }
 });
 
 // Observa el elemento body
 ro.observe(document.body);
+
+var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+if (isSafari) {
+   alert("SAFARI")
+} else {
+  alert("CHROME")
+}
+
+
 
 
 
